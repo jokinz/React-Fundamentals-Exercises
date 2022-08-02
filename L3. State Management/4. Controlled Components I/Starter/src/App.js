@@ -1,7 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from "react";
 
 const App = () => {
+  const [inputValue, setInputValue] = useState("")
+  const updateText = (inputValue) =>{
+    setInputValue(inputValue)
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -9,9 +14,9 @@ const App = () => {
         <h1 className="App-title">ReactND - Coding Practice</h1>
       </header>
       <div className="container">
-        <input type="text" placeholder="Say Something" />
+        <input type="text" placeholder="Say Something" value={inputValue} onChange={(event) => updateText(event.target.value)}/>
         <p className="echo">Echo:</p>
-        <p>This should mirror the text you typed into the input field.</p>
+        <p>{inputValue}</p>
       </div>
     </div>
   );
